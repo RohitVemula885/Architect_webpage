@@ -15,7 +15,6 @@ export default function Header() {
       <Container>
         <Navbar.Brand href="#">BRANDBOX</Navbar.Brand>
 
-        {/* Toggle button controls expanded state */}
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           onClick={() => setExpanded(expanded ? false : "expanded")}
