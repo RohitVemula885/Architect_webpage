@@ -6,13 +6,9 @@ const Contact = () => {
   const form = useRef();
   const [emailError, setEmailError] = useState("");
 
-  // Strict email validation function
   const validateEmail = (email) => {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!regex.test(email)) return false;
-    const domain = email.split("@")[1];
-    if (domain.includes("..") || domain.includes("--")) return false;
-    return true;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
   };
 
   const handleEmailChange = (e) => {
@@ -96,7 +92,7 @@ const Contact = () => {
             name="form_email"
             placeholder="Your Email"
             className={`form-control mb-1 ${
-              emailError ? "is-invalid" : form.current?.form_email.value ? "is-valid" : ""
+              emailError ? "is-invalid" : "is-valid"
             }`}
             onChange={handleEmailChange}
             required
@@ -114,7 +110,7 @@ const Contact = () => {
           <button
             type="submit"
             className="btn btn-primary w-100"
-            disabled={!!emailError} 
+            disabled={!!emailError} // disable button if email invalid
           >
             Send
           </button>
